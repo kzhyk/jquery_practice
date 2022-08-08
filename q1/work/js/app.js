@@ -1,7 +1,7 @@
 // Q1-1 -- 何故か反映されず "load"は使えない？
 $(function() {
     // 読み込み時に
-    $("#q1").on("load", function() {
+    $("#q1").ready( function() {
     // CSSで文字色を緑に変更
     $("#q1").css("color","green");
     })
