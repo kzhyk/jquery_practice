@@ -37,7 +37,7 @@ $(function() {
 });
 
 
-// Q1-5 -- 色々試したものの"Q5"の前後への挿入ができず
+// Q1-5
 $(function() {
     // クリック時に
     $("#q5").on("click", function() {
@@ -45,7 +45,8 @@ $(function() {
     $("#q5").before("DOMの前");
     $("#q5").after("DOMの後");
     // 文字に対しDOMの挿入
-    $("#q5").text("DOMの中の前Q5DOMの中の後");
+    $("#q5").prepend("DOMの中の前");
+    $("#q5").append("DOMの中の後");
     })
 });
 
@@ -75,9 +76,9 @@ $(function() {
 $(function() {
     // ホバー時に
     $("#q8").on("mouseenter", function() {
-    // クラスを追加
+    // クラスを追加して
     $("#q8").addClass("large");
-    // &幅・高さ・フォントサイズを変更
+    // 幅・高さ・フォントサイズを変更
     $(".btn .large").css({"width":"300px", "padding":"50px", "font-size":"20px"});
     })    
 });
@@ -96,10 +97,12 @@ $(function() {
 // Q1-10
     $(function() {
     // Q10クリック時に
-    $("#q10").on("click", function() {
+    $("#q10>li").on("click", function() {
+    // index番号を取得して
+    var index = $(this).index();
     // クラスを追加
-    $("#q11>li").addClass("large-text");
-    // Q11の文字サイズを大きく
+    $("#q11>li").eq(index).addClass("large-text");
+    // Q11の文字サイズを大きくする
     $("li .large-text").css("font-size","30px");
     })
 });
