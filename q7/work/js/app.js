@@ -14,7 +14,7 @@ $(".btn__submit").on("click", function() {
     var year = $(".year").val();
     var month = $(".month").val();
     var day = $(".day").val();
-    console.log("生年月日");
+    console.log("生年月日");7
     console.log(year + "年" + month + "月" + day + "日");
     // 性別
     var gender__content = $('input[name="gender"]:checked').val();  
