@@ -57,7 +57,7 @@
         $('.message').remove();
         $('.lists').append('<li class="lists-item">' + bookData + '</li>');
     } else if (searchWord !== null && searchWord == '') {
-    // エラー処理１（
+    // エラー処理１（入力なし）
         $('.message').remove();
         $(".lists").before('<div class="message">検索キーワードが有効ではありません。</br>1文字以上で検索して下さい。</div>');   
     } else {
