@@ -36,26 +36,27 @@
         }
         $.ajax(settings).done(function (response) {
             const result = response['@graph'];
-            console.log(result)
             displayResult(result)
+            console.log(result);
             })
             .fail(function (err) {
             displayError(err)
             });
-    
-        // APIで取得したデータの代入
-            let title = settings['title'];
-            let author = settings['name'];
-            let publisher = settings['dc:publisher'];
-            let link = settings['@id'];
-            const bookData = '<p>タイトル：' + {title} + '</p></br>' + '<p>作者：' + {author} + '</p></br>' + '<p>出版社：' + {publisher} + '</p></br>' + '<p>書籍情報' + {link} + '</p>'
-
-            console.log(bookData);
-            
+        
     // 結果の表示(searchWordが入力されている時、されていない時)
     if(searchWord !== null && searchWord !== '') {
         $('.message').remove();
-        $('.lists').append('<li class="lists-item">' + bookData + '</li>');
+        // 結果の数だけループ
+        for (var data in result){
+        // APIで取得したデータの代入
+            let title = data['title'];
+            let author = data['dc:creator'];
+            let publisher = data['dc:publisher'];
+            let link = data['@id'];
+        // HTML内に記述
+            const bookData = '<div class="list-inner">' + '<p>タイトル：' + {title} + '</p>' + '<p>作者：' + {author} + '</p>' + '<p>出版社：' + {publisher} + '</p>' + '<a href="' + {link} + '" "target=_blank">書籍情報</a>' + '</div>'    
+            $('.lists').append('<li class="lists-item">' + bookData + '</li>');
+        };
     } else if (searchWord !== null && searchWord == '') {
     // エラー処理１（入力なし）
         $('.message').remove();
